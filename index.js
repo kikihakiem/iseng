@@ -5,7 +5,7 @@ Iseng.prototype.init = function(data) {
 };
 Iseng.prototype.test = function(word) {
   // TODO: convert word to pattern
-  var pattern = ">" + word;
+  var pattern = word;
   return patterns.indexOf(pattern) >= 0;
 };
 module.exports = new Iseng();
