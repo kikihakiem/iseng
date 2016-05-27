@@ -1,16 +1,35 @@
 var iseng = require('../index.js');
+var fakeData = " foo bar";
+var fakeBuffer = {
+  toString: function() { return fakeData; }
+};
 
 describe("Iseng", function() {
   describe("init", function() {
     it("reads buffer into patterns", function() {
-      var fakeData = {
-        toString: function() { return "foo bar"; }
-      };
-      spyOn(fakeData, "toString").and.callThrough();
-      iseng.init(fakeData);
+      spyOn(fakeBuffer, "toString").and.callThrough();
+      iseng.init(fakeBuffer);
 
-      expect(fakeData.toString).toHaveBeenCalled();
-      expect(iseng.patterns).toEqual("foo bar")
+      expect(fakeBuffer.toString).toHaveBeenCalled();
+      expect(iseng.patterns).toEqual(fakeData)
+    });
+  });
+
+  describe("test", function() {
+    beforeEach(function() {
+      iseng.init(fakeBuffer);
+    });
+
+    describe("when supplied with non-english word", function() {
+      it("returns false", function() {
+        expect(iseng.test("baz")).toBeFalsy();
+      });
+    });
+
+    describe("when given english word", function() {
+      it("returns true", function() {
+        expect(iseng.test("bar")).toBeTruthy();
+      });
     });
   });
 });
