@@ -1,5 +1,5 @@
 var iseng = require('../index.js');
-var fakeData = " foo bar";
+var fakeData = " 100 101";
 var fakeBuffer = {
   toString: function() { return fakeData; }
 };
@@ -20,16 +20,24 @@ describe("Iseng", function() {
       iseng.init(fakeBuffer);
     });
 
-    describe("when supplied with non-english word", function() {
+    describe("when given non-matching word pattern", function() {
       it("returns false", function() {
-        expect(iseng.test("baz")).toBeFalsy();
+        expect(iseng.test("xyz")).toBeFalsy();
       });
     });
 
-    describe("when given english word", function() {
+    describe("when given matching word pattern", function() {
       it("returns true", function() {
         expect(iseng.test("bar")).toBeTruthy();
       });
+    });
+
+    it("calls toPattern function", function() {
+      spyOn(iseng, "toPattern");
+      var testWord = "foo";
+      iseng.test(testWord);
+
+      expect(iseng.toPattern).toHaveBeenCalledWith(testWord);
     });
   });
 });
