@@ -28,7 +28,7 @@ lineReader.on('line', function (line) {
 lineReader.on('close', function() {
   // generate data, ignore pattern if count < 3
   var fs = require('fs');
-  var writeStream = fs.createWriteStream(path.join(__dirname, 'result.txt'), { flags : 'w' });
+  var writeStream = fs.createWriteStream(path.join(__dirname, 'data.txt'), { flags : 'w' });
   for (var pattern in patternsCount) {
     if (patternsCount.hasOwnProperty(pattern)) {
       var count = patternsCount[pattern];

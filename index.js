@@ -18,6 +18,6 @@ Iseng.prototype.toPattern = function(word) {
 };
 Iseng.prototype.test = function(word) {
   var pattern = this.toPattern(word);
-  return this.patterns.indexOf(pattern) >= 0;
+  return this.patterns.indexOf(" " + pattern + " ") >= 0;
 };
 module.exports = new Iseng();

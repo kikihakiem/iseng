@@ -1,5 +1,5 @@
 var iseng = require('../index.js');
-var fakeData = " 100 101";
+var fakeData = " 100 101 ";
 var fakeBuffer = {
   toString: function() { return fakeData; }
 };
@@ -23,6 +23,8 @@ describe("Iseng", function() {
     describe("when given non-matching word pattern", function() {
       it("returns false", function() {
         expect(iseng.test("xyz")).toBeFalsy();
+        expect(iseng.test("ot")).toBeFalsy();
+        expect(iseng.test("oi")).toBeFalsy();
       });
     });
 
