@@ -1,6 +1,6 @@
 # Iseng
 
-`iseng` is an Indonesian word, more or less means "just for fun". As the name suggest, this module is created just for fun. So, nothing to see here..
+`iseng` is an Indonesian word, more or less means "just for fun". As the name suggest, this module is created just for fun. This is my attempt to take part in *Hola! JS Challenge Spring 2016: Word Classifier*. 
 
 ## Development
 
